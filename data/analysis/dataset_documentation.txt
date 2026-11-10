@@ -1,0 +1,57 @@
+APEMA - DATASET DOCUMENTATION
+
+1. DATASET
+Building Data Genome Project 2 (BDG2)
+
+2. SELECTED BUILDING
+Building ID: Hog_office_Byron
+Building Category: Office
+Location: Hog site
+
+3. DATA PERIOD
+Start: 2016-01-01 00:00:00
+End: 2017-12-31 23:00:00
+Sampling interval: Hourly
+
+4. DATA QUALITY
+Original records: 17544
+Valid records: 17423
+Missing readings: 121
+Duplicate timestamps: 0
+Zero readings: 0
+Negative readings: 0
+Detected outliers: 153
+
+5. DEMAND STATISTICS
+Mean: 951.95
+Standard deviation: 193.82
+Minimum: 219.00
+Maximum: 1816.289
+
+6. LIMITATIONS
+- Electricity measurement unit confirmed as kWh per hour
+  using the original BDG2 research documentation.
+- Each hourly reading represents energy consumed
+  during that one-hour interval.
+- For a one-hour simulation interval, the numerical
+  hourly energy value equals average power in kW.
+
+7. PREPROCESSING
+Missing demand readings were removed.
+Original demand values were preserved.
+No artificial readings were generated.
+
+8. MEASUREMENT UNIT CONFIRMATION
+
+Source: Building Data Genome Project 2 research paper.
+
+Electricity meter unit: kWh
+Measurement interval: 1 hour
+Measurement type: Hourly energy consumption
+
+Selected building: Hog_office_Byron
+Electricity meter available: Yes
+
+For the one-hour APEMA simulation:
+Hourly energy in kWh is numerically equivalent
+to average power in kW.

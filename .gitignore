@@ -1,0 +1,66 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Python testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js dependencies
+node_modules/
+frontend/node_modules/
+
+# Frontend production build
+frontend/dist/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Model cache
+__pycache__/
+
+# Generated Python distribution files
+build/
+dist/
+*.egg-info/
+
+# Original BDG2 raw dataset
+data/raw/
+
+# Ignore large generated files
+*.parquet
+*.feather
+
+# Keep processed project data
+!data/processed/
+
+# Large trained machine learning models
+forecasting/models/*.pkl
