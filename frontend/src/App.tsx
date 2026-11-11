@@ -3,6 +3,11 @@ import EnergyCharts from './EnergyCharts'
 import BatterySOC from './BatterySOC'
 import SolarIndicator from './SolarIndicator'
 import GridMonitoring from './GridMonitoring'
+import BatteryAnalysis from './BatteryAnalysis'
+import ElectricityCostAnalysis from './ElectricityCostAnalysis'
+import SolarAnalysis from './SolarAnalysis'
+import GridDependencyAnalysis from './GridDependencyAnalysis'
+import EnergyScheduling from './EnergyScheduling'
 
 interface OptimizationResult {
   mode: string
@@ -17,6 +22,7 @@ interface EnergyRow {
   timestamp: string
   demand_kw: number
   solar_kw: number
+  tariff_inr_per_kwh: number
   grid_import_kw: number
   battery_charge_kw: number
   battery_discharge_kw: number
@@ -131,6 +137,7 @@ function App() {
           timestamp: row.timestamp,
           demand_kw: Number(row.demand_kw),
           solar_kw: Number(row.solar_kw),
+          tariff_inr_per_kwh: Number(row.tariff_inr_per_kwh),
           grid_import_kw: Number(row.grid_import_kw),
           battery_charge_kw: Number(row.battery_charge_kw),
           battery_discharge_kw: Number(row.battery_discharge_kw),
@@ -467,6 +474,39 @@ function App() {
         {hourlyData.length > 0 && (
           <section className="mb-8">
             <GridMonitoring data={hourlyData} />
+          </section>
+        )}
+        {/* Battery Charge and Discharge Analysis */}
+        {hourlyData.length > 0 && (
+          <section className="mb-8">
+            <BatteryAnalysis
+              data={hourlyData}
+              capacityKwh={200}
+            />
+          </section>
+        )}
+        {/* Electricity Cost Analysis */}
+        {hourlyData.length > 0 && (
+          <section className="mb-8">
+            <ElectricityCostAnalysis data={hourlyData} />
+          </section>
+        )}
+        {/* Solar Energy Utilization Analysis */}
+        {hourlyData.length > 0 && (
+          <section className="mb-8">
+            <SolarAnalysis data={hourlyData} />
+          </section>
+        )}
+        {/* Grid Dependency and Energy Independence Analysis */}
+        {hourlyData.length > 0 && (
+          <section className="mb-8">
+            <GridDependencyAnalysis data={hourlyData} />
+          </section>
+        )}
+        {/* Energy Scheduling Analysis */}
+        {hourlyData.length > 0 && (
+          <section className="mb-8">
+            <EnergyScheduling data={hourlyData} />
           </section>
         )}
         {/* Energy Charts */}
