@@ -8,6 +8,7 @@ import ElectricityCostAnalysis from './ElectricityCostAnalysis'
 import SolarAnalysis from './SolarAnalysis'
 import GridDependencyAnalysis from './GridDependencyAnalysis'
 import EnergyScheduling from './EnergyScheduling'
+import RollingHorizonMPC from './RollingHorizonMPC'
 
 interface OptimizationResult {
   mode: string
@@ -201,6 +202,13 @@ function App() {
             className="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800"
           >
             Energy Charts
+          </a>
+
+          <a
+            href="#mpc-section"
+            className="block rounded-lg px-4 py-3 text-cyan-400 hover:bg-slate-800"
+          >
+            Rolling-Horizon MPC
           </a>
 
           <a
@@ -525,6 +533,11 @@ function App() {
 
           </section>
         )}
+
+        {/* Rolling-Horizon Model Predictive Control Section */}
+        <section className="mb-10">
+          <RollingHorizonMPC apiUrl={API_URL} />
+        </section>
 
         {/* Architecture */}
         <section

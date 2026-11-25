@@ -266,8 +266,19 @@ The objective is to evaluate the trade-offs between electricity cost reduction, 
 - [x] Battery SOC visualization
 - [x] Solar energy monitoring
 - [x] Grid energy monitoring
-- [ ] Advanced battery performance analytics
-- [ ] Further model and forecast improvements
+- [x] Rolling-Horizon Model Predictive Control (MPC) integration (Phase 8)
+- [x] Automated pytest testing suite (34 unit & integration tests)
+- [x] Advanced battery performance analytics
+- [ ] Further model and forecast improvements (e.g. XGBoost)
+
+## 12. Model Predictive Control (Phase 8)
+
+APEMA implements closed-loop Model Predictive Control (MPC) in `simulation/rolling_horizon_controller.py`:
+- **Rolling Forecast Window:** Dynamically updates 24-hour demand forecasts using lag-1 load feedback, alongside diurnal PV and tariff schedules.
+- **Physical Battery State Feedback:** Re-solves the MILP optimizer hourly, executes only the first-hour action ($P_{\text{ch}}[0], P_{\text{dis}}[0]$), updates physical battery SOC with real converter efficiencies, and logs realized building energy balance.
+- **REST API Endpoints:** `POST /rolling-optimize`, `GET /results/rolling/{mode}`, and `GET /results/comparison`.
+- **Frontend Integration:** Dedicated interactive MPC section with configuration controls, KPI cards, and comparative Plotly charts.
+- **Full Documentation:** See [docs/ROLLING_HORIZON_MPC.md](file:///c:/Users/duddu/Documents/APEMA%20project/docs/ROLLING_HORIZON_MPC.md).
 
 ## 12. Important Limitations
 

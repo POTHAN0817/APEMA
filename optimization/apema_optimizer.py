@@ -47,19 +47,27 @@ class APEMAOptimizer:
         self.degradation_weight = self.settings["degradation_weight"]
         self.solar_weight = self.settings["solar_weight"]
 
+        self.explicit_terminal_soc = terminal_soc
         self.terminal_soc = (
-            max(initial_soc, self.settings["terminal_soc"])
-            if terminal_soc is None
-            else terminal_soc
+            terminal_soc
+            if terminal_soc is not None
+            else self.settings["terminal_soc"]
         )
 
-        if not self.min_soc <= self.initial_soc <= self.max_soc:
+        # Allow slight floating point tolerance (1e-5) for boundary validation
+        if not (self.min_soc - 1e-5 <= self.initial_soc <= self.max_soc + 1e-5):
             raise ValueError("Initial SOC is outside permitted limits.")
 
-        if not self.min_soc <= self.terminal_soc <= self.max_soc:
+        if not (self.min_soc - 1e-5 <= self.terminal_soc <= self.max_soc + 1e-5):
             raise ValueError("Terminal SOC is outside permitted limits.")
 
-    def optimize(self, data):
+    def optimize(self, data, initial_soc=None):
+
+        if initial_soc is not None:
+            # Numerical tolerance clamp to guard against floating-point precision issues
+            self.initial_soc = float(
+                np.clip(initial_soc, self.min_soc, self.max_soc)
+            )
 
         required_columns = [
             "demand_kw",

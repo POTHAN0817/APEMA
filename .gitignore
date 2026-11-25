@@ -64,3 +64,10 @@ data/raw/
 
 # Large trained machine learning models
 forecasting/models/*.pkl
+
+# Generated MPC benchmark outputs
+results/rolling_horizon_*_results.csv
+results/rolling_horizon_results.csv
+results/mpc_vs_static_comparison.csv
+results/api_rolling_*_results.csv
+results/plots/mpc_vs_static_comparison.png
